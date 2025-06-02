@@ -9,9 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-three/fiber": "^8.17.14",
+    "@react-three/postprocessing": "^2.19.1",
+    "next": "14.2.29",
+    "postprocessing": "^6.36.0",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.29"
+    "three": "^0.167.1"
   },
   "devDependencies": {
     "typescript": "^5",
