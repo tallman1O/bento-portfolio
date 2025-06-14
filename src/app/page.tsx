@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Dither from "./utils/background/_Dither/Dither";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { FlipWords } from "@/components/ui/flip-words";
 import Image from "next/image";
@@ -95,13 +94,16 @@ const Home = () => {
 
   return (
     <div className="h-screen w-screen relative">
-      <div className="fixed inset-0 z-10">
-        <Dither enableMouseInteraction={false} />
-      </div>
-
-      <div className="relative h-full w-full flex items-start justify-center p-20 gap-4">
+      <div
+        className="relative h-full w-full flex items-start justify-center p-20 gap-4"
+        style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(6, 182, 212, 0.2) 1px, transparent 0)`,
+          backgroundSize: "18px 18px",
+          backgroundRepeat: "repeat",
+        }}
+      >
         {/* Profile Card */}
-        <div className="flex flex-col items-start justify-start gap-2 w-1/2">
+        <div className="flex flex-col items-start justify-start gap-4 w-1/2">
           <motion.div
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
@@ -314,12 +316,7 @@ const Home = () => {
           </div>
 
           {/* Projects */}
-          <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className=" w-full z-20 bg-transparent flex flex-col items-start justify-center p-4 hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.6)] transition-all duration-300 rounded-lg"
-          >
+          <div className=" w-full z-20 bg-transparent flex flex-col items-start justify-center p-4 hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.6)] transition-all duration-300 rounded-lg">
             <div className="relative w-full flex flex-col items-center justify-center">
               <Link
                 href="/projects"
@@ -332,7 +329,7 @@ const Home = () => {
                 <SquareArrowOutUpRight className="w-10 h-10 text-white" />
               </Link>
             </div>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
     </div>
