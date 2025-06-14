@@ -36,7 +36,7 @@ export const useNasaAPOD = (): UseNasaAPODReturn => {
     };
 
     fetchAPOD();
-  }, []);
+  }, [apiKey]);
 
   return { data, isLoading, error };
 };
