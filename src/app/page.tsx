@@ -7,8 +7,6 @@ import Link from "next/link";
 import { SquareArrowOutUpRight } from "lucide-react";
 import { NasaAPOD } from "../components/NasaAPOD";
 import { motion } from "motion/react";
-import { ShootingStars } from "@/components/ui/shooting-stars";
-import { StarsBackground } from "@/components/ui/stars-background";
 import { SpotifyNowPlaying } from "@/components/SpotifyNowPlaying";
 
 const techStack = {
@@ -142,9 +140,9 @@ const Home = () => {
         {/* Profile Card */}
         <div className="flex flex-col items-start justify-start gap-4 w-1/2">
           <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.5, delay: 0.5 }}
             className="w-full h-fit bg-transparent p-4 flex flex-col items-start justify-center"
           >
             <div className="flex items-center gap-2 p-4">
@@ -203,7 +201,7 @@ const Home = () => {
           <motion.div
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
+            transition={{ duration: 1.5, delay: 0.5 }}
             className="w-full z-20 flex flex-col items-center justify-center rounded-lg"
           >
             <div className="relative w-full flex flex-col items-center justify-center">
@@ -214,9 +212,9 @@ const Home = () => {
 
         {/* Tech Stack */}
         <motion.div
-          initial={{ opacity: 0, y: 100 }}
+          initial={{ opacity: 0, y: -100 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          transition={{ duration: 1.5, delay: 0.5 }}
           className="flex w-1/3 h-fit items-start justify-start gap-2 bg-transparent p-4"
         >
           <div className="flex flex-col items-start gap-4 w-full">
@@ -291,13 +289,13 @@ const Home = () => {
         </motion.div>
 
         {/* Links & Projects */}
-        <motion.div
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="flex flex-col items-start justify-start gap-2"
-        >
-          <div className="h-fit bg-transparent p-4 flex flex-col items-start justify-center">
+        <div className="flex flex-col items-start justify-start gap-2">
+          <motion.div
+            initial={{ opacity: 0, y: -100 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5, delay: 0.5 }}
+            className="h-fit bg-transparent p-4 flex flex-col items-start justify-center"
+          >
             <div className="flex items-start justify-start gap-4 p-4">
               <h1 className="text-white text-5xl font-bold">
                 LIN
@@ -308,7 +306,7 @@ const Home = () => {
                 <div className="flex items-center justify-center gap-2">
                   <Link href="https://x.com/tallman1O" target="_blank">
                     <Image
-                      src="https://img.icons8.com/ios-filled/50/twitterx--v1.png"
+                      src="https://img.icons8.com/pulsar-gradient/100/twitterx.png"
                       alt="Twitter"
                       width={60}
                       height={60}
@@ -317,7 +315,7 @@ const Home = () => {
                   </Link>
                   <Link href="https://github.com/tallman1O" target="_blank">
                     <Image
-                      src="https://img.icons8.com/glyph-neue/60/github.png"
+                      src="https://img.icons8.com/pulsar-gradient/100/github.png"
                       alt="Github"
                       width={60}
                       height={60}
@@ -331,7 +329,7 @@ const Home = () => {
                     target="_blank"
                   >
                     <Image
-                      src="https://img.icons8.com/color/96/linkedin.png"
+                      src="https://img.icons8.com/pulsar-gradient/100/linkedin.png"
                       alt="LinkedIn"
                       width={60}
                       height={60}
@@ -340,7 +338,7 @@ const Home = () => {
                   </Link>
                   <Link href="mailto:mehulsavio@gmail.com" target="_blank">
                     <Image
-                      src="https://img.icons8.com/color/96/gmail-new.png"
+                      src="https://img.icons8.com/pulsar-gradient/100/gmail-new.png"
                       alt="gmail-new"
                       width={60}
                       height={60}
@@ -350,10 +348,15 @@ const Home = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Projects */}
-          <div className="w-full z-20 bg-transparent flex flex-col items-start justify-center p-4 hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.6)] transition-all duration-300 rounded-lg">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.5, delay: 0.5 }}
+            className="w-full z-20 bg-transparent flex flex-col items-start justify-center p-4 hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.6)] transition-all duration-300 rounded-lg"
+          >
             <div className="relative w-full flex flex-col items-center justify-center">
               <Link
                 href="/projects"
@@ -366,21 +369,24 @@ const Home = () => {
                 <SquareArrowOutUpRight className="w-10 h-10 text-white" />
               </Link>
             </div>
-          </div>
+          </motion.div>
 
           {/* Spotify */}
-          <div className="w-full z-20 bg-transparent flex flex-col items-start justify-center p-4">
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5, delay: 0.5 }}
+            className="w-full z-20 bg-transparent flex flex-col items-start justify-center p-4"
+          >
             <div className="relative w-full flex flex-col items-start justify-center">
               <h1 className="text-white text-4xl font-bold relative z-10 p-2">
                 NOW PLAYING.
               </h1>
               <SpotifyNowPlaying onLoad={handleSpotifyLoad} />
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
-      <ShootingStars />
-      <StarsBackground />
     </div>
   );
 };
