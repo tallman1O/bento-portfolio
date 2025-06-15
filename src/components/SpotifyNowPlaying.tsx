@@ -47,6 +47,7 @@ export const SpotifyNowPlaying = ({ onLoad }: SpotifyNowPlayingProps) => {
           alt={track.name}
           fill
           className="rounded-lg object-cover transition-transform duration-300 group-hover:scale-105"
+          onLoad={() => onLoad?.()}
         />
         <Link
           href={track.external_urls.spotify}

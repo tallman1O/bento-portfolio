@@ -1,65 +1,50 @@
-import { useState, useEffect, useRef } from "react";
-import { NasaAPODResponse } from "../types/nasa";
+import { useState, useEffect } from "react";
+
+interface NasaAPODData {
+  date: string;
+  explanation: string;
+  hdurl: string;
+  media_type: string;
+  service_version: string;
+  title: string;
+  url: string;
+}
 
 interface UseNasaAPODReturn {
-  data: NasaAPODResponse | null;
+  data: NasaAPODData | null;
   isLoading: boolean;
-  error: Error | null;
+  error: string | null;
 }
 
 export const useNasaAPOD = (): UseNasaAPODReturn => {
-  const [data, setData] = useState<NasaAPODResponse | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [error, setError] = useState<Error | null>(null);
-  const isMounted = useRef(false);
-  const hasFetched = useRef(false);
-
-  const apiKey = process.env.NEXT_PUBLIC_NASA_API_KEY;
-  console.log("NASA API Key available:", !!apiKey);
+  const [data, setData] = useState<NasaAPODData | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    isMounted.current = true;
-
-    const fetchAPOD = async () => {
-      // Prevent multiple fetches
-      if (hasFetched.current) return;
-      hasFetched.current = true;
-
+    const fetchNasaData = async () => {
       try {
-        console.log("Starting to fetch APOD data");
-        setIsLoading(true);
-        const response = await fetch(
-          `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`
-        );
+        const response = await fetch("/api/nasa/apod");
 
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+          throw new Error("Failed to fetch NASA APOD data");
         }
 
-        const result = await response.json();
-        if (isMounted.current) {
-          console.log("APOD data fetched successfully:", result);
-          setData(result);
-        }
+        const data = await response.json();
+        setData(data);
+        setError(null);
       } catch (err) {
-        if (isMounted.current) {
-          console.error("Error fetching APOD:", err);
-          setError(err instanceof Error ? err : new Error("An error occurred"));
-        }
+        console.error("Error fetching NASA APOD data:", err);
+        setError(
+          err instanceof Error ? err.message : "Failed to fetch NASA APOD data"
+        );
       } finally {
-        if (isMounted.current) {
-          console.log("Setting isLoading to false");
-          setIsLoading(false);
-        }
+        setIsLoading(false);
       }
     };
 
-    fetchAPOD();
-
-    return () => {
-      isMounted.current = false;
-    };
-  }, [apiKey]);
+    fetchNasaData();
+  }, []);
 
   return { data, isLoading, error };
 };
