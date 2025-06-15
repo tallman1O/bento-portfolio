@@ -8,6 +8,7 @@ import { SquareArrowOutUpRight } from "lucide-react";
 import { NasaAPOD } from "../components/NasaAPOD";
 import { motion } from "motion/react";
 import { SpotifyNowPlaying } from "@/components/SpotifyNowPlaying";
+import { RandomQuotes } from "@/components/RandomQuotes";
 
 const techStack = {
   frontend: [
@@ -121,6 +122,13 @@ const Home = () => {
     }
   }, [nasaLoaded]);
 
+  const handleQuotesLoad = useCallback(() => {
+    console.log("Quotes loaded");
+    if (nasaLoaded && spotifyLoaded) {
+      setIsLoading(false);
+    }
+  }, [nasaLoaded, spotifyLoaded]);
+
   if (isLoading) {
     return (
       <div className="h-screen w-screen flex items-center justify-center bg-black">
@@ -135,10 +143,10 @@ const Home = () => {
   }
 
   return (
-    <div className="h-screen w-screen relative">
-      <div className="relative h-full w-full flex items-start justify-center p-20 gap-4">
+    <div className="min-h-screen w-screen relative">
+      <div className="relative min-h-screen w-full flex flex-col lg:flex-row items-start justify-center p-2 sm:p-8 md:p-8 lg:p-12 gap-4">
         {/* Profile Card */}
-        <div className="flex flex-col items-start justify-start gap-4 w-1/2">
+        <div className="flex flex-col items-start justify-start gap-4 w-full lg:w-1/2">
           <motion.div
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
@@ -211,92 +219,112 @@ const Home = () => {
         </div>
 
         {/* Tech Stack */}
-        <motion.div
-          initial={{ opacity: 0, y: -100 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5, delay: 0.5 }}
-          className="flex w-1/3 h-fit items-start justify-start gap-2 bg-transparent p-4"
-        >
-          <div className="flex flex-col items-start gap-4 w-full">
-            <p className="text-white text-7xl font-bold">{"{ }"}</p>
-            <h1 className="text-white text-3xl font-bold capitalize">
-              TECH STACK.
-            </h1>
-            <div className="flex flex-col items-start gap-2 w-full">
-              <p className="text-white/80 flex items-start text-sm font-bold">
-                Frontend :
-              </p>
-              <div className="flex items-center gap-4 flex-wrap w-full">
-                {techStack.frontend.map((tech) => (
-                  <div
-                    key={tech.name}
-                    className="flex items-center gap-1 rounded-full p-2 bg-transparent cursor-pointer hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.6)] transition-all duration-300"
-                  >
-                    <Image
-                      src={tech.icon}
-                      alt={tech.name}
-                      width={24}
-                      height={24}
-                    />
-                    <p className="text-white text-sm font-bold">{tech.name}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="flex flex-col items-start gap-2">
-              <p className="text-white/80 flex items-start text-sm font-bold">
-                Backend :
-              </p>
-              <div className="flex items-center gap-4 flex-wrap w-full">
-                {techStack.backend.map((tech) => (
-                  <div
-                    key={tech.name}
-                    className="flex items-center gap-1 rounded-full p-2 bg-transparent cursor-pointer hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.6)] transition-all duration-300"
-                  >
-                    <Image
-                      src={tech.icon}
-                      alt={tech.name}
-                      width={24}
-                      height={24}
-                    />
-                    <p className="text-white text-sm font-bold">{tech.name}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="flex flex-col items-start gap-2">
-              <p className="text-white/80 flex items-start text-sm font-bold">
-                Database & Cloud :
-              </p>
-              <div className="flex items-center gap-4 flex-wrap w-full">
-                {techStack["Database & Cloud"].map((tech) => (
-                  <div
-                    key={tech.name}
-                    className="flex items-center gap-1 rounded-full p-2 bg-transparent cursor-pointer hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.6)] transition-all duration-300"
-                  >
-                    <Image
-                      src={tech.icon}
-                      alt={tech.name}
-                      width={24}
-                      height={24}
-                    />
-                    <p className="text-white text-sm font-bold">{tech.name}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Links & Projects */}
-        <div className="flex flex-col items-start justify-start gap-2">
+        <div className="flex flex-col items-start justify-start gap-4 w-full lg:w-1/2">
           <motion.div
             initial={{ opacity: 0, y: -100 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.5, delay: 0.5 }}
-            className="h-fit bg-transparent p-4 flex flex-col items-start justify-center"
+            className="flex w-full h-fit items-start justify-start gap-2 bg-transparent p-4"
           >
-            <div className="flex items-start justify-start gap-4 p-4">
+            <div className="flex flex-col items-start gap-4 w-full">
+              <p className="text-white text-7xl font-bold">{"{ }"}</p>
+              <h1 className="text-white text-3xl font-bold capitalize">
+                TECH STACK.
+              </h1>
+              <div className="flex flex-col items-start gap-2 w-full">
+                <p className="text-white/80 flex items-start text-sm font-bold">
+                  Frontend :
+                </p>
+                <div className="flex items-center gap-4 flex-wrap w-full">
+                  {techStack.frontend.map((tech) => (
+                    <div
+                      key={tech.name}
+                      className="flex items-center gap-1 rounded-full p-2 bg-transparent cursor-pointer hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.6)] transition-all duration-300"
+                    >
+                      <Image
+                        src={tech.icon}
+                        alt={tech.name}
+                        width={24}
+                        height={24}
+                      />
+                      <p className="text-white text-sm font-bold">
+                        {tech.name}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="flex flex-col items-start gap-2">
+                <p className="text-white/80 flex items-start text-sm font-bold">
+                  Backend :
+                </p>
+                <div className="flex items-center gap-4 flex-wrap w-full">
+                  {techStack.backend.map((tech) => (
+                    <div
+                      key={tech.name}
+                      className="flex items-center gap-1 rounded-full p-2 bg-transparent cursor-pointer hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.6)] transition-all duration-300"
+                    >
+                      <Image
+                        src={tech.icon}
+                        alt={tech.name}
+                        width={24}
+                        height={24}
+                      />
+                      <p className="text-white text-sm font-bold">
+                        {tech.name}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="flex flex-col items-start gap-2">
+                <p className="text-white/80 flex items-start text-sm font-bold">
+                  Database & Cloud :
+                </p>
+                <div className="flex items-center gap-4 flex-wrap w-full">
+                  {techStack["Database & Cloud"].map((tech) => (
+                    <div
+                      key={tech.name}
+                      className="flex items-center gap-1 rounded-full p-2 bg-transparent cursor-pointer hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.6)] transition-all duration-300"
+                    >
+                      <Image
+                        src={tech.icon}
+                        alt={tech.name}
+                        width={24}
+                        height={24}
+                      />
+                      <p className="text-white text-sm font-bold">
+                        {tech.name}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Quotes */}
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5, delay: 0.5 }}
+            className="flex w-full h-fit items-start justify-start gap-2 bg-transparent p-2 sm:p-4"
+          >
+            <div className="flex flex-col items-start gap-4 w-full">
+              <RandomQuotes onLoad={handleQuotesLoad} />
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Links & Projects */}
+        <div className="flex flex-col items-start justify-start gap-2 w-full lg:w-auto">
+          <motion.div
+            initial={{ opacity: 0, y: -100 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5, delay: 0.5 }}
+            className="h-fit bg-transparent p-4 flex flex-col items-center justify-center w-full"
+          >
+            <div className="flex items-center justify-center gap-4 p-4 w-full">
               <h1 className="text-white text-5xl font-bold">
                 LIN
                 <br />
