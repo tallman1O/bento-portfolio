@@ -219,7 +219,7 @@ const Home = () => {
         </div>
 
         {/* Tech Stack */}
-        <div className="flex flex-col items-start justify-start gap-4 w-full lg:w-1/2">
+        <div className="flex flex-col items-start justify-start gap-4 w-full lg:w-1/3">
           <motion.div
             initial={{ opacity: 0, y: -100 }}
             animate={{ opacity: 1, y: 0 }}
