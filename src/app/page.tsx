@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useCallback, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { FlipWords } from "@/components/ui/flip-words";
 import Image from "next/image";
@@ -7,6 +7,9 @@ import Link from "next/link";
 import { SquareArrowOutUpRight } from "lucide-react";
 import { NasaAPOD } from "../components/NasaAPOD";
 import { motion } from "motion/react";
+import { ShootingStars } from "@/components/ui/shooting-stars";
+import { StarsBackground } from "@/components/ui/stars-background";
+import { SpotifyNowPlaying } from "@/components/SpotifyNowPlaying";
 
 const techStack = {
   frontend: [
@@ -83,25 +86,59 @@ const Home = () => {
   ];
 
   const [time, setTime] = React.useState(new Date());
+  const [isLoading, setIsLoading] = useState(true);
+  const [nasaLoaded, setNasaLoaded] = useState(false);
+  const [spotifyLoaded, setSpotifyLoaded] = useState(false);
 
   React.useEffect(() => {
     const timer = setInterval(() => {
       setTime(new Date());
     }, 1000);
 
-    return () => clearInterval(timer);
+    // Add a safety timeout to prevent infinite loading
+    const safetyTimeout = setTimeout(() => {
+      console.log("Safety timeout triggered - forcing content to show");
+      setIsLoading(false);
+    }, 5000); // 5 seconds timeout
+
+    return () => {
+      clearInterval(timer);
+      clearTimeout(safetyTimeout);
+    };
   }, []);
+
+  const handleNasaLoad = useCallback(() => {
+    console.log("NASA image loaded");
+    setNasaLoaded(true);
+    if (spotifyLoaded) {
+      setIsLoading(false);
+    }
+  }, [spotifyLoaded]);
+
+  const handleSpotifyLoad = useCallback(() => {
+    console.log("Spotify data loaded");
+    setSpotifyLoaded(true);
+    if (nasaLoaded) {
+      setIsLoading(false);
+    }
+  }, [nasaLoaded]);
+
+  if (isLoading) {
+    return (
+      <div className="h-screen w-screen flex items-center justify-center bg-black">
+        <div className="flex flex-col items-center gap-4">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-white"></div>
+          <p className="text-white text-xl">
+            Loading your cosmic experience...
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="h-screen w-screen relative">
-      <div
-        className="relative h-full w-full flex items-start justify-center p-20 gap-4"
-        style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(6, 182, 212, 0.2) 1px, transparent 0)`,
-          backgroundSize: "18px 18px",
-          backgroundRepeat: "repeat",
-        }}
-      >
+      <div className="relative h-full w-full flex items-start justify-center p-20 gap-4">
         {/* Profile Card */}
         <div className="flex flex-col items-start justify-start gap-4 w-1/2">
           <motion.div
@@ -167,10 +204,10 @@ const Home = () => {
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="w-full z-20 flex flex-col items-start justify-center rounded-lg"
+            className="w-full z-20 flex flex-col items-center justify-center rounded-lg"
           >
             <div className="relative w-full flex flex-col items-center justify-center">
-              <NasaAPOD />
+              <NasaAPOD onLoad={handleNasaLoad} />
             </div>
           </motion.div>
         </div>
@@ -316,7 +353,7 @@ const Home = () => {
           </div>
 
           {/* Projects */}
-          <div className=" w-full z-20 bg-transparent flex flex-col items-start justify-center p-4 hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.6)] transition-all duration-300 rounded-lg">
+          <div className="w-full z-20 bg-transparent flex flex-col items-start justify-center p-4 hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.6)] transition-all duration-300 rounded-lg">
             <div className="relative w-full flex flex-col items-center justify-center">
               <Link
                 href="/projects"
@@ -330,8 +367,20 @@ const Home = () => {
               </Link>
             </div>
           </div>
+
+          {/* Spotify */}
+          <div className="w-full z-20 bg-transparent flex flex-col items-start justify-center p-4">
+            <div className="relative w-full flex flex-col items-start justify-center">
+              <h1 className="text-white text-4xl font-bold relative z-10 p-2">
+                NOW PLAYING.
+              </h1>
+              <SpotifyNowPlaying onLoad={handleSpotifyLoad} />
+            </div>
+          </div>
         </motion.div>
       </div>
+      <ShootingStars />
+      <StarsBackground />
     </div>
   );
 };

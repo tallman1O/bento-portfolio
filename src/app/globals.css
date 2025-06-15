@@ -9,7 +9,7 @@
 }
 
 .bg-transparent {
-  @apply bg-white/10 backdrop-blur-sm rounded-lg z-20;
+  @apply bg-white/10 backdrop-blur-none rounded-lg z-20;
 }
 
 @layer base {

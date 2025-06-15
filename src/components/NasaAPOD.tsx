@@ -1,9 +1,24 @@
 import { useNasaAPOD } from "../app/hooks/useNasaAPOD";
-
 import Image from "next/image";
+import { useEffect } from "react";
 
-export const NasaAPOD = () => {
+interface NasaAPODProps {
+  onLoad?: () => void;
+}
+
+export const NasaAPOD = ({ onLoad }: NasaAPODProps) => {
   const { data, isLoading, error } = useNasaAPOD();
+
+  useEffect(() => {
+    // Call onLoad if we have data or if there's an error (to prevent infinite loading)
+    if ((!isLoading && data) || error) {
+      console.log("NasaAPOD: Calling onLoad callback", {
+        hasData: !!data,
+        hasError: !!error,
+      });
+      onLoad?.();
+    }
+  }, [isLoading, data, error, onLoad]);
 
   if (isLoading) {
     return (
@@ -16,13 +31,17 @@ export const NasaAPOD = () => {
   if (error) {
     return (
       <div className="w-full h-full flex items-center justify-center text-white">
-        Error: {error.message}
+        <p className="text-sm text-white/50">Cosmic image unavailable</p>
       </div>
     );
   }
 
   if (!data) {
-    return null;
+    return (
+      <div className="w-full h-full flex items-center justify-center">
+        <p className="text-sm text-white/50">Cosmic image unavailable</p>
+      </div>
+    );
   }
 
   return (
@@ -34,6 +53,8 @@ export const NasaAPOD = () => {
             alt={data.title}
             fill
             className="object-cover rounded-lg shadow-[0_0_8px_2px_rgba(255,255,255,0.6)]"
+            priority
+            onLoad={() => onLoad?.()}
           />
         </div>
       )}
