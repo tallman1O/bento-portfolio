@@ -42,7 +42,7 @@ export const useSpotify = (): UseSpotifyReturn => {
         setIsLoading(true);
 
         const clientId = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
-        const clientSecret = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET;
+        const clientSecret = process.env.NEXT_PRIVATE_SPOTIFY_CLIENT_SECRET;
 
         if (!clientId || !clientSecret) {
           throw new Error("Spotify credentials not found");
