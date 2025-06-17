@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState, createContext } from "react";
+import React, { useEffect, useState, createContext, type JSX } from "react";
 import { IconArrowNarrowLeft, IconArrowNarrowRight } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
