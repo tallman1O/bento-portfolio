@@ -8,7 +8,7 @@ import { SquareArrowOutUpRight } from "lucide-react";
 import { NasaAPOD } from "../components/NasaAPOD";
 import { motion } from "motion/react";
 import { SpotifyNowPlaying } from "@/components/SpotifyNowPlaying";
-import { RandomQuotes } from "@/components/RandomQuotes";
+// import { RandomQuotes } from "@/components/RandomQuotes";
 
 const techStack = {
   frontend: [
@@ -122,12 +122,12 @@ const Home = () => {
     }
   }, [nasaLoaded]);
 
-  const handleQuotesLoad = useCallback(() => {
-    console.log("Quotes loaded");
-    if (nasaLoaded && spotifyLoaded) {
-      setIsLoading(false);
-    }
-  }, [nasaLoaded, spotifyLoaded]);
+    // const handleQuotesLoad = useCallback(() => {
+    //   console.log("Quotes loaded");
+    //   if (nasaLoaded && spotifyLoaded) {
+    //     setIsLoading(false);
+    //   }
+    // }, [nasaLoaded, spotifyLoaded]);
 
   if (isLoading) {
     return (
@@ -304,7 +304,7 @@ const Home = () => {
           </motion.div>
 
           {/* Quotes */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.5, delay: 0.5 }}
@@ -313,7 +313,7 @@ const Home = () => {
             <div className="flex flex-col items-start gap-4 w-full">
               <RandomQuotes onLoad={handleQuotesLoad} />
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
 
         {/* Links & Projects */}

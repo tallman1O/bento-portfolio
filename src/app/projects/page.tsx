@@ -36,7 +36,6 @@ export default function Projects() {
             />
           </svg>
         </span>
-        .
       </motion.h2>
       <Carousel items={cards} />
     </div>
