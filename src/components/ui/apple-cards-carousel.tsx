@@ -154,21 +154,21 @@ export const Card = ({
     <Link href={card.linksrc} target="_blank">
       <motion.div
         layoutId={layout ? `card-${card.title}` : undefined}
-        className="relative z-10 flex h-64 w-48 flex-col items-start justify-start overflow-hidden rounded-3xl bg-transparent md:h-[30rem] md:w-80 dark:bg-neutral-900"
+        className="relative z-10 flex h-64 w-48 flex-col items-start justify-start overflow-hidden rounded-3xl bg-transparent md:h-[30rem] md:w-80 dark:bg-neutral-900 group"
       >
         <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-full bg-gradient-to-b from-black/50 via-transparent to-transparent" />
         <div className="relative z-40 p-6">
           <motion.p
-            layoutId={layout ? `category-${card.category}` : undefined}
-            className="text-left font-spaceGrotesk text-xs font-medium text-white md:text-sm"
-          >
-            {card.category}
-          </motion.p>
-          <motion.p
             layoutId={layout ? `title-${card.title}` : undefined}
-            className="mt-2 max-w-xs text-left font-spaceGrotesk text-lg font-semibold [text-wrap:balance] text-white md:text-2xl"
+            className="mt-2 max-w-xs text-left font-spaceGrotesk text-lg [text-wrap:balance] text-white font-bold p-1 backdrop-blur-sm rounded-lg md:text-2xl"
           >
             {card.title}
+          </motion.p>
+          <motion.p
+            layoutId={layout ? `category-${card.category}` : undefined}
+            className="text-left font-spaceGrotesk text-xs font-medium text-white p-1 backdrop-blur-sm rounded-lg md:text-sm hidden group-hover:block transition-all duration-2000 animate-pulse"
+          >
+            {card.category}
           </motion.p>
         </div>
         <BlurImage
