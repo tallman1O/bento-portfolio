@@ -11,8 +11,38 @@ const spaceGrotesk = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio | Mehul Uttam",
-  description: "Mehul Uttam's Portfolio",
+  title: "Mehul Uttam | Developer",
+  description:
+    "Explore my portfolio showcasing full-stack development projects using React, Next.js, Node.js and more. Software developer based in Pune, India specializing in building modern web applications.",
+  keywords: [
+    "Full Stack Developer",
+    "Software Engineer",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Web Development",
+    "Portfolio",
+  ],
+  openGraph: {
+    title: "Mehul Uttam | Developer",
+    description: "Full-stack developer specializing in modern web applications",
+    type: "website",
+    url: "https://mehuluttam.vercel.app",
+    images: [
+      {
+        url: "/mehul.png",
+        width: 800,
+        height: 600,
+        alt: "Mehul Uttam",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mehul Uttam | Developer",
+    description: "Full-stack developer specializing in modern web applications",
+    images: ["/mehul.png"],
+  },
 };
 
 export default function RootLayout({
