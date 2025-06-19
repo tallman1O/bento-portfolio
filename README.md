@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# My Portfolio
 
-## Getting Started
+A modern, interactive portfolio built with Next.js, showcasing the work, skills, and interests of **Mehul Uttam**.
 
-First, run the development server:
+![Preview](public/mehul.png)
+
+[Live Website](https://mehuluttam.vercel.app)
+
+## 🚀 About Me
+
+Hi! I'm **Mehul Uttam**, a 21-year-old software developer based in Pune, India. I build products, frontends, backends, web apps, and mobile apps. I'm passionate about technology, design, and creating delightful user experiences.
+
+- 🌍 Pune, India
+- 🟢 Available for work
+
+## 🛠️ Tech Stack
+
+**Frontend:**
+
+- React
+- Next.js
+- Tailwind CSS
+- Framer Motion
+
+**Backend:**
+
+- Node.js
+- Express
+- NestJS
+- FastAPI
+- Django
+
+**Database & Cloud:**
+
+- PostgreSQL
+- MongoDB
+- Appwrite
+- Docker
+- Kubernetes
+
+## ✨ Features
+
+- Animated, interactive UI
+- NASA Astronomy Picture of the Day integration
+- Spotify Now Playing widget
+- Responsive and accessible design
+- Projects showcase
+
+## 🖥️ Getting Started
+
+Clone the repo and install dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/tallman1O/bento-portfolio.git
+cd bento-portfolio
+npm install # or yarn or pnpm or bun
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Run the development server:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run dev # or yarn dev or pnpm dev or bun dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-## Learn More
+## 📫 Connect with Me
 
-To learn more about Next.js, take a look at the following resources:
+- [Twitter/X](https://x.com/tallman1O)
+- [LinkedIn](https://www.linkedin.com/in/mehul-uttam/)
+- [Gmail](mailto:mehulsavio@gmail.com)
+- [GitHub](https://github.com/tallman1O)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+_This project is inspired by creativity, curiosity, and a love for building cool things. Your feedback and contributions are welcome!_
