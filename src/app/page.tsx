@@ -122,12 +122,12 @@ const Home = () => {
     }
   }, [nasaLoaded]);
 
-    // const handleQuotesLoad = useCallback(() => {
-    //   console.log("Quotes loaded");
-    //   if (nasaLoaded && spotifyLoaded) {
-    //     setIsLoading(false);
-    //   }
-    // }, [nasaLoaded, spotifyLoaded]);
+  // const handleQuotesLoad = useCallback(() => {
+  //   console.log("Quotes loaded");
+  //   if (nasaLoaded && spotifyLoaded) {
+  //     setIsLoading(false);
+  //   }
+  // }, [nasaLoaded, spotifyLoaded]);
 
   if (isLoading) {
     return (
@@ -178,12 +178,12 @@ const Home = () => {
                 </p>
               </div>
               <div className="flex items-start justify-between w-full py-4 mt-20">
-                <p className="text-white/50 italic">
+                <p className="text-white/50 italic hidden md:block">
                   &quot;How to make this div
                   <br /> center again?&quot;
                 </p>
-                <div className="flex-col items-center justify-center gap-2">
-                  <div className="flex items-center justify-center gap-2">
+                <div className="flex flex-col items-start md:items-end justify-end gap-2">
+                  <div className="flex items-center justify-start md:justify-end gap-2">
                     <div className="w-2 h-2 rounded-full bg-green-500 ml-2 animate-pulse shadow-[0_0_8px_2px_rgba(34,197,94,0.6)]"></div>
                     <p className="text-white/50 italic">Available for work.</p>
                   </div>
