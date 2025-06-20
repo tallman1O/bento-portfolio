@@ -22,7 +22,7 @@ export default function Projects() {
             viewBox="0 0 446 30"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="absolute top-4 md:top-14 left-0 bottom-0 right-0 w-32 md:w-auto h-4 md:h-auto"
+            className="absolute top-7 md:top-14 left-0 bottom-0 right-0 w-32 md:w-auto h-4 md:h-auto"
           >
             <motion.path
               initial={{ pathLength: 0, opacity: 0 }}
