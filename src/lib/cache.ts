@@ -80,9 +80,10 @@ export class CacheManager {
       const item = localStorage.getItem(this.CACHE_PREFIX + key);
       if (!item) return true;
 
-      const cacheItem: CacheItem<any> = JSON.parse(item);
+      const cacheItem: CacheItem<unknown> = JSON.parse(item);
       return Date.now() > cacheItem.expiresAt;
     } catch (error) {
+      console.error("Error checking cache expiration:", error);
       return true;
     }
   }
