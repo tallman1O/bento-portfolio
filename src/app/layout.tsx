@@ -12,6 +12,10 @@ const spaceGrotesk = localFont({
 
 export const metadata: Metadata = {
   title: "Mehul Uttam | Developer",
+  icons: {
+    icon: "/favicon.ico",
+    
+  },
   description:
     "Explore my portfolio showcasing full-stack development projects using React, Next.js, Node.js and more. Software developer based in Pune, India specializing in building modern web applications.",
   keywords: [
@@ -53,7 +57,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${spaceGrotesk.variable} font-spaceGrotesk antialiased bg-black`}
+        className={`${spaceGrotesk.variable} font-spaceGrotesk antialiased fixed inset-0 bg-black`}
       >
         <ShootingStars />
         <StarsBackground />
