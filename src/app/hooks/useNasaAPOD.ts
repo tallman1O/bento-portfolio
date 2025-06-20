@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { CacheManager } from "@/lib/cache";
 
 interface NasaAPODData {
   date: string;
@@ -16,6 +17,8 @@ interface UseNasaAPODReturn {
   error: string | null;
 }
 
+const NASA_CACHE_KEY = "nasa_apod";
+
 export const useNasaAPOD = (): UseNasaAPODReturn => {
   const [data, setData] = useState<NasaAPODData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -24,14 +27,27 @@ export const useNasaAPOD = (): UseNasaAPODReturn => {
   useEffect(() => {
     const fetchNasaData = async () => {
       try {
+        // Check cache first
+        const cachedData = CacheManager.get<NasaAPODData>(NASA_CACHE_KEY);
+        if (cachedData) {
+          setData(cachedData);
+          setIsLoading(false);
+          return;
+        }
+
+        // If no cache, fetch from API
         const response = await fetch("/api/nasa/apod");
 
         if (!response.ok) {
           throw new Error("Failed to fetch NASA APOD data");
         }
 
-        const data = await response.json();
-        setData(data);
+        const apiData = await response.json();
+
+        // Cache the data
+        CacheManager.set(NASA_CACHE_KEY, apiData);
+
+        setData(apiData);
         setError(null);
       } catch (err) {
         console.error("Error fetching NASA APOD data:", err);

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { CacheManager } from "@/lib/cache";
 
 interface SpotifyTrack {
   name: string;
@@ -31,6 +32,8 @@ const ARTISTS = [
   "0C0XlULifJtAgn6ZNCW2eu", // The Killers
 ];
 
+const SPOTIFY_CACHE_KEY = "spotify_track";
+
 export const useSpotify = (): UseSpotifyReturn => {
   const [track, setTrack] = useState<SpotifyTrack | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -39,6 +42,15 @@ export const useSpotify = (): UseSpotifyReturn => {
   useEffect(() => {
     const fetchSpotifyData = async () => {
       try {
+        // Check cache first
+        const cachedTrack = CacheManager.get<SpotifyTrack>(SPOTIFY_CACHE_KEY);
+        if (cachedTrack) {
+          setTrack(cachedTrack);
+          setIsLoading(false);
+          return;
+        }
+
+        // If no cache, fetch from API
         // Get a random artist from the list
         const randomArtist =
           ARTISTS[Math.floor(Math.random() * ARTISTS.length)];
@@ -72,6 +84,10 @@ export const useSpotify = (): UseSpotifyReturn => {
         // Get a random track from the top tracks
         const randomTrack =
           data.tracks[Math.floor(Math.random() * data.tracks.length)];
+
+        // Cache the track
+        CacheManager.set(SPOTIFY_CACHE_KEY, randomTrack);
+
         setTrack(randomTrack);
         setError(null);
       } catch (err) {

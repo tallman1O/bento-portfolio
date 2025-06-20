@@ -170,6 +170,7 @@ const Home = () => {
                 I Build
                 <FlipWords
                   words={words}
+                  duration={1200}
                   className="text-white inline-block font-bold"
                 />{" "}
                 <p className="text-lg">
