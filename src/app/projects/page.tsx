@@ -13,7 +13,7 @@ export default function Projects() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeInOut" }}
-        className="max-w-7xl text-white font-spaceGrotesk pl-4 mx-auto text-xl md:text-5xl font-bold dark:text-neutral-200"
+        className="max-w-7xl text-white font-spaceGrotesk pl-4 mx-auto text-2xl md:text-5xl font-bold dark:text-neutral-200"
       >
         Explore My{" "}
         <span className="relative">
