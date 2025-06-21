@@ -56,7 +56,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${spaceGrotesk.variable} font-spaceGrotesk antialiased bg-black min-h-screen lg:overflow-hidden`}
+        className={`${spaceGrotesk.variable} font-spaceGrotesk antialiased bg-black min-h-screen`}
       >
         <div className="relative min-h-screen lg:h-screen">
           <ShootingStars />
