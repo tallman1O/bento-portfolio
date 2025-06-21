@@ -54,7 +54,7 @@ const data = [
     category: "Nextjs, TailwindCSS, Motion, Aceternity UI",
     title: "MTT Robocon Landing Page",
     src: "/images/mtt.png",
-    linksrc: "https://zentry-clone-dev.vercel.app/",
+    linksrc: "https://robocon.in/",
     content: null,
   },
   {
