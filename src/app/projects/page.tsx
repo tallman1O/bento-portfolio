@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
 import { motion } from "motion/react";
@@ -44,6 +43,20 @@ export default function Projects() {
 }
 
 const data = [
+  {
+    category: "React, TailwindCSS, GSAP",
+    title: "Zentry - Awwwards winning website",
+    src: "/images/zentry.png",
+    linksrc: "https://zentry-clone-dev.vercel.app/",
+    content: null,
+  },
+  {
+    category: "Nextjs, TailwindCSS, Motion, Aceternity UI",
+    title: "MTT Robocon Landing Page",
+    src: "/images/mtt.png",
+    linksrc: "https://zentry-clone-dev.vercel.app/",
+    content: null,
+  },
   {
     category: "Nextjs, Tailwind, NeonDB, Clerk, Gemini ",
     title: "Prepmate - AI-Powered Mock Interview Prep",
