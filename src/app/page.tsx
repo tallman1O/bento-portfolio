@@ -25,8 +25,16 @@ const techStack = {
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
     },
     {
-      name: "Framer Motion",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/framermotion/framermotion-original.svg",
+      name: "Motion",
+      icon: "/logo/motion.svg",
+    },
+    {
+      name: "Zustand",
+      icon: "/logo/zustand.svg",
+    },
+    {
+      name: "Expo",
+      icon: "https://img.icons8.com/ios-filled/24/expo.png",
     },
   ],
   backend: [
@@ -37,14 +45,6 @@ const techStack = {
     {
       name: "Express",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
-    },
-    {
-      name: "NestJS",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-original.svg",
-    },
-    {
-      name: "FastAPI",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
     },
     {
       name: "Django",
@@ -65,12 +65,42 @@ const techStack = {
       icon: "https://cdn.simpleicons.org/appwrite/F02E65",
     },
     {
+      name: "Firebase",
+      icon: "/logo/firebase.svg",
+    },
+    {
+      name: "NeonDB",
+      icon: "/logo/neon.svg",
+    },
+    {
+      name: "Drizzle",
+      icon: "/logo/drizzle.svg",
+    },
+    {
       name: "Docker",
       icon: "https://skillicons.dev/icons?i=docker",
     },
+  ],
+  "Tools & Platforms": [
     {
-      name: "Kubernetes",
-      icon: "https://skillicons.dev/icons?i=kubernetes",
+      name: "Git",
+      icon: "https://skillicons.dev/icons?i=git",
+    },
+    {
+      name: "Figma",
+      icon: "https://skillicons.dev/icons?i=figma",
+    },
+    {
+      name: "Cursor",
+      icon: "/logo/cursor.svg",
+    },
+    {
+      name: "Postman",
+      icon: "https://skillicons.dev/icons?i=postman",
+    },
+    {
+      name: "Vercel",
+      icon: "/logo/vercel.svg",
     },
   ],
 };
@@ -240,7 +270,7 @@ const Home = () => {
                   {techStack.frontend.map((tech) => (
                     <div
                       key={tech.name}
-                      className="flex items-center gap-1 rounded-full p-2 bg-transparent cursor-pointer hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.6)] transition-all duration-300"
+                      className="flex items-center gap-2 rounded-full p-2 bg-transparent cursor-pointer hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.6)] transition-all duration-300"
                     >
                       <Image
                         src={tech.icon}
@@ -263,7 +293,7 @@ const Home = () => {
                   {techStack.backend.map((tech) => (
                     <div
                       key={tech.name}
-                      className="flex items-center gap-1 rounded-full p-2 bg-transparent cursor-pointer hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.6)] transition-all duration-300"
+                      className="flex items-center gap-2 rounded-full p-2 bg-transparent cursor-pointer hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.6)] transition-all duration-300"
                     >
                       <Image
                         src={tech.icon}
@@ -286,7 +316,30 @@ const Home = () => {
                   {techStack["Database & Cloud"].map((tech) => (
                     <div
                       key={tech.name}
-                      className="flex items-center gap-1 rounded-full p-2 bg-transparent cursor-pointer hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.6)] transition-all duration-300"
+                      className="flex items-center gap-2 rounded-full p-2 bg-transparent cursor-pointer hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.6)] transition-all duration-300"
+                    >
+                      <Image
+                        src={tech.icon}
+                        alt={tech.name}
+                        width={24}
+                        height={24}
+                      />
+                      <p className="text-white text-sm font-bold">
+                        {tech.name}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="flex flex-col items-start gap-2">
+                <p className="text-white/80 flex items-start text-sm font-bold">
+                  Tools & Platforms :
+                </p>
+                <div className="flex items-center gap-4 flex-wrap w-full">
+                  {techStack["Tools & Platforms"].map((tech) => (
+                    <div
+                      key={tech.name}
+                      className="flex items-center gap-2 rounded-full p-2 bg-transparent cursor-pointer hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.6)] transition-all duration-300"
                     >
                       <Image
                         src={tech.icon}
