@@ -64,4 +64,12 @@ const data = [
     linksrc: "https://prepmate-ai.vercel.app",
     content: null,
   },
+  {
+    category:
+      "Nextjs, TailwindCSS, NeonDB, Zustand, Firebase Storage, Openrouter.ai",
+    title: "D2C - Design 2 Code",
+    src: "/images/d2c.png",
+    linksrc: "https://design2code-ai.vercel.app/",
+    content: null,
+  },
 ];

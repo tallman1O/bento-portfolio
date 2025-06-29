@@ -174,7 +174,7 @@ const Home = () => {
 
   return (
     <div className="min-h-screen w-screen relative">
-      <div className="relative min-h-screen w-full flex flex-col lg:flex-row items-start justify-center p-2 sm:p-8 md:p-8 gap-4">
+      <div className="relative min-h-screen w-full flex flex-col lg:flex-row items-start justify-center p-2 sm:p-6 md:p-8 gap-4">
         {/* Profile Card */}
         <div className="flex flex-col items-start justify-start gap-4 w-full lg:w-1/2">
           <motion.div
