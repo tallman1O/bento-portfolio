@@ -118,6 +118,7 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [nasaLoaded, setNasaLoaded] = useState(false);
   const [spotifyLoaded, setSpotifyLoaded] = useState(false);
+  const [active, setActive] = useState(false);
 
   React.useEffect(() => {
     const timer = setInterval(() => {
@@ -434,6 +435,7 @@ const Home = () => {
 
           {/* Projects */}
           <motion.div
+            onMouseEnter={() => setActive(true)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.5, delay: 0.5 }}
@@ -442,8 +444,8 @@ const Home = () => {
             <div className="relative w-full flex flex-col items-center justify-center">
               <Link
                 href="/projects"
-                target="_blank"
                 className="flex flex-col items-center justify-center"
+                prefetch={active ? null : false}
               >
                 <h1 className="text-white text-4xl font-bold relative z-10 p-2 flex items-center gap-2 justify-center">
                   PROJECTS.
