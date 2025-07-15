@@ -211,8 +211,7 @@ const Home = () => {
               </div>
               <div className="flex items-start justify-between w-full py-4 mt-20">
                 <p className="text-white/50 italic hidden md:block">
-                  &quot;How to make this div
-                  <br /> center again?&quot;
+                  &quot;Prod Database? Might delete later&quot;
                 </p>
                 <div className="flex flex-col items-start md:items-end justify-end gap-2">
                   <div className="flex items-center justify-start md:justify-end gap-2">
